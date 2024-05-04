@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>水文数据预报信息平台</title>
+    <link rel="stylesheet" href="static/css/index.css" />
+    <script src="static/js/flexible.js"></script>
+  </head>
+  <body>
+    <!-- 头部的盒子 -->
+    <header>
+      <h1>水文数据预报信息平台</h1>
+      <div class="showTime"></div>
+    </header>
+
+    <!-- 页面主体部分 -->
+    <section class="mainbox">
+      <div class="column">
+        <div class="panel bar">
+          <h2>气温随时间变化趋势</h2>
+          <div class="chart" id="left1"></div>
+          <div class="panel-footer"></div>
+        </div>
+        <div class="panel line">
+          <h2>
+            降水量随时间变化趋势
+          </h2>
+          <div class="chart" id="left2"></div>
+          <div class="panel-footer"></div>
+        </div>
+        <div class="panel pie">
+          <h2>蒸发量随时间变化趋势</h2>
+          <div class="chart" id="left3"></div>
+          <div class="panel-footer"></div>
+        </div>
+      </div>
+      <div class="column">
+        <!-- no模块制作 -->
+        <div class="no">
+          <div class="no-hd">
+            <ul>
+              <li id="center1"></li>
+              <li id="center2"></li>
+            </ul>
+          </div>
+          <div class="no-bd">
+
+          </div>
+        </div>
+        <!-- 地图模块 -->
+        <div class="map">
+          <div class="map1"></div>
+          <div class="map2"></div>
+          <div class="map3"></div>
+          <div class="chart" id="map"></div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="panel bar2">
+          <h2>2022年平均水位排名</h2>
+          <div class="chart" id="right1"></div>
+          <div class="panel-footer"></div>
+        </div>
+        <div class="panel line2">
+          <h2>湘江,资水,沅水,澧水水位变化情况</h2>
+          <div class="chart" id="right2"></div>
+          <div class="panel-footer"></div>
+        </div>
+        <div class="panel pie2">
+          <h2>湘江水位预测</h2>
+          <div class="chart" id="right3"></div>
+          <div class="panel-footer"></div>
+        </div>
+      </div>
+    </section>
+    <script src="static/js/echarts.min.js"></script>
+    <script src="static/js/echarts-wordcloud.min.js"></script>
+    <script src="static/js/china.js"></script>
+    <script src="static/js/config.js"></script>
+    <script src="static/js/left1.js"></script>
+    <script src="static/js/left2.js"></script>
+    <script src="static/js/left3.js"></script>
+    <script src="static/js/center1.js"></script>
+    <script src="static/js/center2.js"></script>
+    <script src="static/js/china.js"></script>
+    <script src="static/js/map.js"></script>
+    <script src="static/js/right1.js"></script>
+    <script src="static/js/right2.js"></script>
+    <script src="static/js/right3.js"></script>
+    <script>
+      var t = null;
+      t = setTimeout(time, 1000); //開始运行
+      function time() {
+        clearTimeout(t); //清除定时器
+        dt = new Date();
+        var y = dt.getFullYear();
+        var mt = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var h = dt.getHours(); //获取时
+        var m = dt.getMinutes(); //获取分
+        var s = dt.getSeconds(); //获取秒
+        document.querySelector(".showTime").innerHTML =
+          "当前时间：" +
+          y +
+          "年" +
+          mt +
+          "月" +
+          day +
+          "-" +
+          h +
+          "时" +
+          m +
+          "分" +
+          s +
+          "秒";
+        t = setTimeout(time, 1000); //设定定时器，循环运行
+      }
+    </script>
+  </body>
+</html>
